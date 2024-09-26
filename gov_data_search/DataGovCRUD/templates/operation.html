@@ -1,0 +1,116 @@
+<h1>操作頁面</h1>
+
+<!-- 查詢資料按鈕 -->
+<div>
+    <a href="{% url 'event_list' %}">查詢資料</a>
+</div>
+
+<!-- 查詢資料 -->
+<div>
+    <form method="get" id="queryForm" action="">
+        <label for="query_pk">輸入要查詢的Event pk：</label>
+        <input type="text" id="query_pk" name="pk" placeholder="請輸入資料 pk">
+        <button type="button" onclick="queryEvent()">查詢資料</button>
+    </form>
+</div>
+
+<script>
+    function queryEvent() {
+        var pk = document.getElementById('query_pk').value;
+        if (pk) {
+            // Redirect to the correct URL with the input pk
+            window.location.href = `/operation/events/${pk}/`;
+        } else {
+            alert('請輸入有效的資料 pk');
+        }
+    }
+</script>
+
+<!-- 修改資料 -->
+<div>
+    <form method="get" id="updateForm" action="">
+        <label for="update_pk">輸入要修改的Event pk：</label>
+        <input type="text" id="update_pk" name="pk" placeholder="請輸入資料 pk">
+        <button type="button" onclick="updateEvent()">修改資料</button>
+    </form>
+</div>
+
+
+
+<script>
+    function updateEvent() {
+        var pk = document.getElementById('update_pk').value;
+        if (pk) {
+            // Redirect to the correct URL with the input pk
+            window.location.href = `/operation/update/event/${pk}/`;
+        } else {
+            alert('請輸入有效的資料 pk');
+        }
+    }
+</script>
+
+
+<!-- 修改資料 -->
+<div>
+    <form method="get" id="updateForm" action="">
+        <label for="update_pk">輸入要修改的ShowInfo pk：</label>
+        <input type="text" id="update_pk" name="pk" placeholder="請輸入資料 pk">
+        <button type="button" onclick="updateShowInfo()">修改資料</button>
+    </form>
+</div>
+
+<script>
+    function updateShowInfo() {
+        var pk = document.getElementById('update_pk').value;
+        if (pk) {
+            // Redirect to the correct URL with the input pk
+            window.location.href = `/operation/update/showinfo/${pk}/`;
+        } else {
+            alert('請輸入有效的資料 pk');
+        }
+    }
+</script>
+
+
+
+<!-- 刪除資料 -->
+<div>
+    <form method="get" id="deleteForm" action="">
+        <label for="delete_pk">輸入要刪除的Event pk：</label>
+        <input type="text" id="delete_pk" name="pk" placeholder="請輸入資料 pk">
+        <button type="button" onclick="deleteEvent()">刪除資料</button>
+    </form>
+</div>
+
+<script>
+    function deleteEvent() {
+        var pk = document.getElementById('delete_pk').value;
+        if (pk) {
+            // Redirect to the correct URL with the input pk
+            window.location.href = `/operation/delete/event/${pk}/`;
+        } else {
+            alert('請輸入有效的資料 pk');
+        }
+    }
+</script>
+
+<!-- 刪除資料 -->
+<div>
+    <form method="get" id="deleteForm" action="">
+        <label for="delete_pk">輸入要刪除的ShowInfo pk：</label>
+        <input type="text" id="delete_pk" name="pk" placeholder="請輸入資料 pk">
+        <button type="button" onclick="deleteShowInfo()">刪除資料</button>
+    </form>
+</div>
+
+<script>
+    function deleteShowInfo() {
+        var pk = document.getElementById('delete_pk').value;
+        if (pk) {
+            // Redirect to the correct URL with the input pk
+            window.location.href = `/operation/delete/showinfo/${pk}/`;
+        } else {
+            alert('請輸入有效的資料 pk');
+        }
+    }
+</script>

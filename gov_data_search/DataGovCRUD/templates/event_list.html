@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Event List</title>
+</head>
+<body>
+    <h1>Event List</h1>
+    <ul>
+        {% for event in object_list %}
+            <li>
+                <strong>Version:</strong> {{ event.version }}<br>
+                <strong>UID:</strong> {{ event.uid }}<br>
+                <strong>Title:</strong> {{ event.title }}<br>
+                <strong>Category:</strong> {{ event.category }}<br>
+                <strong>Description:</strong> {{ event.description }}<br>
+                <strong>Image URL:</strong> <a href="{{ event.image_url }}">{{ event.image_url }}</a><br>
+                <strong>Web Sale:</strong> <a href="{{ event.web_sale }}">{{ event.web_sale }}</a><br>
+                <strong>Source Web Promote:</strong> <a href="{{ event.source_web_promote }}">{{ event.source_web_promote }}</a><br>
+                <strong>Comment:</strong> {{ event.comment }}<br>
+                <strong>Edit Modify Date:</strong> {{ event.edit_modify_date }}<br>
+                <strong>Source Web Name:</strong> {{ event.source_web_name }}<br>
+                <strong>Start Date:</strong> {{ event.start_date }}<br>
+                <strong>End Date:</strong> {{ event.end_date }}<br>
+                <strong>Hit Rate:</strong> {{ event.hit_rate }}<br>
+                <strong>Show Unit:</strong> {{ event.show_unit }}<br>
+                <strong>Discount Info:</strong> {{ event.discount_info }}<br>
+                <strong>Description Filter HTML:</strong> {{ event.description_filter_html }}<br>
+                <strong>Master Unit:</strong> {{ event.master_unit.all|join:", " }}<br>
+                <strong>Sub Unit:</strong> {{ event.sub_unit.all|join:", " }}<br>
+                <strong>Support Unit:</strong> {{ event.support_unit.all|join:", " }}<br>
+                <strong>Other Unit:</strong> {{ event.other_unit.all|join:", " }}<br>
+            </li>
+        {% empty %}
+            <li>No events available.</li>
+        {% endfor %}
+    </ul>
+
+    <div class="pagination">
+        <span class="step-links">
+            {% if page_obj.has_previous %}
+                <a href="?page=1">« first</a>
+                <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+            {% endif %}
+
+            <span class="current">
+                Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            </span>
+
+            {% if page_obj.has_next %}
+                <a href="?page={{ page_obj.next_page_number }}">next</a>
+                <a href="?page={{ page_obj.paginator.num_pages }}">last »</a>
+            {% endif %}
+        </span>
+    </div>
+</body>
+</html>

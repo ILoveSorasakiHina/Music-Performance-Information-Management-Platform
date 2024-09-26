@@ -1,0 +1,11 @@
+
+{% block content %}
+  <h2>確認刪除</h2>
+  <p>你確定要刪除 {{ object }} 嗎?</p>
+
+  <form method="post">
+    {% csrf_token %}
+    <button type="submit">確定刪除</button>
+    <a href="{% url 'operation' %}">取消</a>
+  </form>
+{% endblock %}

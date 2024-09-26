@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ event.title }} - Event Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        h1 {
+            color: #333;
+        }
+        .event-info {
+            margin-bottom: 20px;
+        }
+        .show-info {
+            margin-top: 20px;
+        }
+        .show-info table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .show-info th, .show-info td {
+            padding: 10px;
+            border: 1px solid #ccc;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>{{ event.title }}</h1>
+
+    <div class="event-info">
+        <p><strong>Category:</strong> {{ event.category }}</p>
+        <p><strong>Description:</strong> {{ event.description }}</p>
+        <p><strong>Start Date:</strong> {{ event.start_date }}</p>
+        <p><strong>End Date:</strong> {{ event.end_date }}</p>
+        <p><strong>Hit Rate:</strong> {{ event.hit_rate }}</p>
+        <p><strong>Show Unit:</strong> {{ event.show_unit }}</p>
+        <p><strong>Web Sales:</strong> <a href="{{ event.web_sale }}" target="_blank">{{ event.web_sale }}</a></p>
+        <p><strong>Image:</strong></p>
+        <img src="{{ event.image_url }}" alt="{{ event.title }}" width="300">
+    </div>
+
+    <div class="show-info">
+        <h2>Show Information</h2>
+
+        {% if showinfos %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Location Name</th>
+                        <th>Address</th>
+                        <th>Latitude</th>
+                        <th>Longitude</th>
+                        <th>Time</th>
+                        <th>End Time</th>
+                        <th>On Sale</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for showinfo in showinfos %}
+                    <tr>
+                        <td>{{ showinfo.id }}</td>
+                        <td>{{ showinfo.location.name }}</td>
+                        <td>{{ showinfo.location.address }}</td>
+                        <td>{{ showinfo.location.latitude }}</td>
+                        <td>{{ showinfo.location.longitude }}</td>
+                        <td>{{ showinfo.time }}</td>
+                        <td>{{ showinfo.end_time }}</td>
+                        <td>{{ showinfo.on_sale|yesno:"Yes,No" }}</td>
+                        <td>{{ showinfo.price }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No show information available.</p>
+        {% endif %}
+    </div>
+
+</body>
+</html>
